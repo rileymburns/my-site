@@ -8,304 +8,16 @@
       name="description"
       content="Riley is a photographer creating beautiful, timeless images shaped by light, texture, and impactful moments."
     />
-    <style>
-      :root {
-        --bg: #11100d;
-        --bg-soft: #1c1914;
-        --card: rgba(255, 248, 238, 0.08);
-        --card-strong: rgba(255, 248, 238, 0.12);
-        --text: #f8efe3;
-        --muted: #d8cdbd;
-        --accent: #c78b4f;
-        --accent-2: #8a7a5a;
-        --line: rgba(255, 248, 238, 0.16);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top left, rgba(199, 139, 79, 0.18), transparent 26%),
-          radial-gradient(circle at bottom right, rgba(138, 122, 90, 0.2), transparent 24%),
-          var(--bg);
-        line-height: 1.6;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .page {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 24px 24px 60px;
-      }
-
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 0 24px;
-      }
-
-      .brand {
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 18px;
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .hero {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 24px;
-        align-items: center;
-        padding: 20px 0 30px;
-      }
-
-      .hero-card,
-      .card,
-      .panel {
-        background: var(--card);
-        border: 1px solid var(--line);
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-      }
-
-      .hero-card {
-        border-radius: 30px;
-        padding: 34px;
-      }
-
-      .eyebrow {
-        display: inline-block;
-        padding: 7px 12px;
-        border-radius: 999px;
-        background: rgba(255, 248, 238, 0.08);
-        color: #f0d7b5;
-        font-size: 0.8rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-      }
-
-      h1 {
-        font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
-        font-size: clamp(2.2rem, 4vw, 3.2rem);
-        line-height: 1.05;
-        margin: 0 0 16px;
-      }
-
-      .lead {
-        font-size: 1.03rem;
-        color: var(--muted);
-        max-width: 620px;
-      }
-
-      .actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 22px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 16px;
-        border-radius: 999px;
-        font-weight: 600;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--accent), #e2b583);
-        color: #191510;
-      }
-
-      .btn-secondary {
-        border: 1px solid var(--line);
-        background: rgba(255, 248, 238, 0.06);
-      }
-
-      .portrait {
-        overflow: hidden;
-        border-radius: 28px;
-        min-height: 440px;
-        background:
-          linear-gradient(180deg, rgba(17, 16, 13, 0.12), rgba(17, 16, 13, 0.5)),
-          url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80") center/cover;
-        border: 1px solid rgba(255, 248, 238, 0.12);
-      }
-
-      .portrait .badge {
-        margin: 20px;
-        display: inline-block;
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: rgba(17, 16, 13, 0.65);
-        border: 1px solid rgba(255, 248, 238, 0.14);
-        font-size: 0.78rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-
-      .content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-        margin-top: 18px;
-      }
-
-      .card {
-        border-radius: 24px;
-        padding: 22px;
-      }
-
-      .card h2,
-      .panel h2 {
-        margin-top: 0;
-        font-size: 1.1rem;
-      }
-
-      .card p,
-      .panel p {
-        color: var(--muted);
-        margin-bottom: 0;
-      }
-
-      .stats {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 16px;
-      }
-
-      .stat {
-        flex: 1;
-        min-width: 110px;
-        padding: 12px;
-        border-radius: 16px;
-        background: rgba(255, 248, 238, 0.06);
-        border: 1px solid rgba(255, 248, 238, 0.1);
-      }
-
-      .stat strong {
-        display: block;
-        font-size: 1.05rem;
-      }
-
-      .gallery {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-        margin-top: 18px;
-      }
-
-      .photo {
-        min-height: 180px;
-        border-radius: 18px;
-        background-size: cover;
-        background-position: center;
-        border: 1px solid rgba(255, 248, 238, 0.12);
-        filter: sepia(0.28) saturate(0.84) contrast(1.03);
-      }
-
-      .photo.one {
-        background-image: url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80");
-      }
-
-      .photo.two {
-        background-image: url("https://images.unsplash.com/photo-1518623489648-a173ef7824f3?auto=format&fit=crop&w=800&q=80");
-      }
-
-      .photo.three {
-        background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80");
-      }
-
-      .panel {
-        border-radius: 26px;
-        padding: 24px;
-        margin-top: 18px;
-      }
-
-      .contact-list {
-        margin-top: 14px;
-        display: grid;
-        gap: 8px;
-      }
-
-      .contact-list a {
-        color: #f0d7b5;
-      }
-
-      footer {
-        text-align: center;
-        color: var(--muted);
-        padding: 28px 0 10px;
-        font-size: 0.95rem;
-      }
-
-      @media (max-width: 900px) {
-        .hero,
-        .content-grid,
-        .gallery {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-card {
-          padding: 24px;
-        }
-
-        .portrait {
-          min-height: 320px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .page {
-          padding: 16px 16px 40px;
-        }
-
-        .nav {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-        }
-
-        .nav-links {
-          flex-wrap: wrap;
-          gap: 12px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page">
       <nav class="nav">
-        <a href="#top" class="brand">Riley</a>
+        <a href="index.html" class="brand">Riley</a>
         <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
+          <a href="pages/about.html">About</a>
+          <a href="pages/work.html">Work</a>
+          <a href="pages/contact.html">Contact</a>
         </div>
       </nav>
 
@@ -317,8 +29,8 @@
             I photograph the moments that feel beautiful and a little timeless — portraits, places, and details shaped by atmosphere.
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="#contact">Book a session</a>
-            <a class="btn btn-secondary" href="#work">View selected work</a>
+            <a class="btn btn-primary" href="pages/contact.html">Book a session</a>
+            <a class="btn btn-secondary" href="pages/work.html">View selected work</a>
           </div>
           <div class="stats">
             <div class="stat"><strong>35mm</strong><span>film-inspired feel</span></div>
@@ -332,45 +44,41 @@
         </div>
       </section>
 
-      <section class="content-grid" id="about">
+      <section class="content-grid">
         <article class="card">
           <h2>About Riley</h2>
           <p>
             I’m a photographer drawn to light, texture, and the quiet honesty of a frame. My work leans toward intimate portraits,
             everyday moments, and scenes that feel timeless.
           </p>
+          <div class="actions">
+            <a class="btn btn-secondary" href="pages/about.html">Learn more</a>
+          </div>
         </article>
         <article class="card">
-          <h2>What I love</h2>
+          <h2>Selected work</h2>
           <p>
             I’m inspired by the mood of vintage film, the softness of natural light, and the beauty of the unguarded moment.
             Each image is made to feel warm, considered, and gently unforgettable.
           </p>
+          <div class="actions">
+            <a class="btn btn-secondary" href="pages/work.html">Browse gallery</a>
+          </div>
         </article>
       </section>
 
-      <section class="panel" id="work">
-        <h2>Selected frames</h2>
-        <p>A small glimpse into the atmosphere and feeling I aim to create.</p>
-        <div class="gallery">
-          <div class="photo one"></div>
-          <div class="photo two"></div>
-          <div class="photo three"></div>
-        </div>
-      </section>
-
-      <section class="panel" id="contact">
+      <section class="panel">
         <h2>Let’s make something beautiful</h2>
         <p>
           If you’re looking for photography for a project, portrait session, or collaboration, I’d love to hear from you.
         </p>
-        <div class="contact-list">
-          <a href="mailto:hello@riley.com">Email: hello@riley.com</a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        <div class="actions">
+          <a class="btn btn-primary" href="pages/contact.html">Get in touch</a>
         </div>
       </section>
 
       <footer>© 2026 Riley — Photography</footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
