@@ -8,7 +8,345 @@
       name="description"
       content="Riley is a photographer creating beautiful, timeless images shaped by light, texture, and impactful moments."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      :root {
+        --bg: #11100d;
+        --bg-soft: #1c1914;
+        --card: rgba(255, 248, 238, 0.08);
+        --card-strong: rgba(255, 248, 238, 0.12);
+        --text: #f8efe3;
+        --muted: #d8cdbd;
+        --accent: #c78b4f;
+        --accent-2: #8a7a5a;
+        --line: rgba(255, 248, 238, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(199, 139, 79, 0.18), transparent 26%),
+          radial-gradient(circle at bottom right, rgba(138, 122, 90, 0.2), transparent 24%),
+          var(--bg);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 24px 24px 60px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0 24px;
+      }
+
+      .brand {
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+        align-items: center;
+        padding: 20px 0 30px;
+      }
+
+      .hero-card,
+      .card,
+      .panel,
+      .weather-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .hero-card {
+        border-radius: 30px;
+        padding: 34px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255, 248, 238, 0.08);
+        color: #f0d7b5;
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        line-height: 1.05;
+        margin: 0 0 16px;
+      }
+
+      .lead {
+        font-size: 1.03rem;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), #e2b583);
+        color: #191510;
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--line);
+        background: rgba(255, 248, 238, 0.06);
+      }
+
+      .portrait {
+        overflow: hidden;
+        border-radius: 28px;
+        min-height: 440px;
+        background:
+          linear-gradient(180deg, rgba(17, 16, 13, 0.12), rgba(17, 16, 13, 0.5)),
+          url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80") center/cover;
+        border: 1px solid rgba(255, 248, 238, 0.12);
+      }
+
+      .portrait .badge {
+        margin: 20px;
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(17, 16, 13, 0.65);
+        border: 1px solid rgba(255, 248, 238, 0.14);
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .card {
+        border-radius: 24px;
+        padding: 22px;
+      }
+
+      .card h2,
+      .panel h2,
+      .weather-card h2 {
+        margin-top: 0;
+        font-size: 1.1rem;
+      }
+
+      .card p,
+      .panel p,
+      .weather-card p {
+        color: var(--muted);
+        margin-bottom: 0;
+      }
+
+      .stats {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      .stat {
+        flex: 1;
+        min-width: 110px;
+        padding: 12px;
+        border-radius: 16px;
+        background: rgba(255, 248, 238, 0.06);
+        border: 1px solid rgba(255, 248, 238, 0.1);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.05rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .photo {
+        min-height: 180px;
+        border-radius: 18px;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid rgba(255, 248, 238, 0.12);
+        filter: sepia(0.28) saturate(0.84) contrast(1.03);
+      }
+
+      .photo.one {
+        background-image: url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80");
+      }
+
+      .photo.two {
+        background-image: url("https://images.unsplash.com/photo-1518623489648-a173ef7824f3?auto=format&fit=crop&w=800&q=80");
+      }
+
+      .photo.three {
+        background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80");
+      }
+
+      .panel {
+        border-radius: 26px;
+        padding: 24px;
+        margin-top: 18px;
+      }
+
+      .weather-card {
+        border-radius: 22px;
+        padding: 18px 20px;
+        margin: 10px 0 0;
+        display: inline-grid;
+        gap: 12px;
+        max-width: 360px;
+        align-self: start;
+      }
+
+      .weather-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .weather-icon {
+        font-size: 1.7rem;
+        line-height: 1;
+      }
+
+      .weather-main {
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .weather-temp {
+        font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .weather-condition {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .weather-status {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .contact-list {
+        margin-top: 14px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .contact-list a {
+        color: #f0d7b5;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 28px 0 10px;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .content-grid,
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card {
+          padding: 24px;
+        }
+
+        .portrait {
+          min-height: 320px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding: 16px 16px 40px;
+        }
+
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="page">
@@ -42,6 +380,21 @@
         <div class="portrait">
           <span class="badge">Available for select projects</span>
         </div>
+      </section>
+
+      <section class="weather-card" aria-live="polite">
+        <div class="weather-header">
+          <div>
+            <span class="eyebrow">Live weather</span>
+            <h2>Current conditions</h2>
+          </div>
+          <div class="weather-icon" id="weather-icon" aria-hidden="true">☀️</div>
+        </div>
+        <div class="weather-main">
+          <div class="weather-temp" id="weather-temp">--°F</div>
+          <div class="weather-condition" id="weather-condition">Checking your location…</div>
+        </div>
+        <p class="weather-status" id="weather-status">Using your browser location to fetch live weather.</p>
       </section>
 
       <section class="content-grid">
@@ -79,6 +432,97 @@
 
       <footer>© 2026 Riley — Photography</footer>
     </div>
-    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const year = new Date().getFullYear();
+        const footer = document.querySelector("footer");
+
+        if (footer) {
+          footer.textContent = `© ${year} Riley — Photography`;
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", () => {
+            document.documentElement.style.scrollBehavior = "smooth";
+          });
+        });
+
+        const weatherIcon = document.getElementById("weather-icon");
+        const weatherTemp = document.getElementById("weather-temp");
+        const weatherCondition = document.getElementById("weather-condition");
+        const weatherStatus = document.getElementById("weather-status");
+
+        const mapWeatherCode = (code) => {
+          const weatherMap = {
+            0: { icon: "☀️", label: "Clear sky" },
+            1: { icon: "🌤️", label: "Mainly clear" },
+            2: { icon: "⛅", label: "Partly cloudy" },
+            3: { icon: "☁️", label: "Overcast" },
+            45: { icon: "🌫️", label: "Fog" },
+            48: { icon: "🌫️", label: "Rime fog" },
+            51: { icon: "🌦️", label: "Light drizzle" },
+            53: { icon: "🌦️", label: "Drizzle" },
+            55: { icon: "🌧️", label: "Dense drizzle" },
+            61: { icon: "🌧️", label: "Light rain" },
+            63: { icon: "🌧️", label: "Rain" },
+            65: { icon: "🌧️", label: "Heavy rain" },
+            71: { icon: "❄️", label: "Light snow" },
+            73: { icon: "❄️", label: "Snow" },
+            75: { icon: "❄️", label: "Heavy snow" },
+            80: { icon: "🌦️", label: "Showers" },
+            81: { icon: "🌧️", label: "Heavy showers" },
+            82: { icon: "🌧️", label: "Violent showers" },
+            85: { icon: "❄️", label: "Snow showers" },
+            86: { icon: "❄️", label: "Heavy snow showers" },
+            95: { icon: "⛈️", label: "Thunderstorm" },
+            96: { icon: "⛈️", label: "Thunderstorm with hail" },
+            99: { icon: "⛈️", label: "Severe thunderstorm" },
+          };
+
+          return weatherMap[code] || { icon: "🌤️", label: "Weather update" };
+        };
+
+        const setWeatherState = (icon, label, status) => {
+          if (weatherIcon) weatherIcon.textContent = icon;
+          if (weatherTemp) weatherTemp.textContent = "--°F";
+          if (weatherCondition) weatherCondition.textContent = label;
+          if (weatherStatus) weatherStatus.textContent = status;
+        };
+
+        if (!navigator.geolocation) {
+          setWeatherState("🌤️", "Location unavailable", "Your browser does not support live location weather.");
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            try {
+              const { latitude, longitude } = position.coords;
+              const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(4)}&longitude=${longitude.toFixed(4)}&current=temperature_2m,weather_code&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto`;
+              const response = await fetch(url);
+
+              if (!response.ok) {
+                throw new Error("Weather request failed");
+              }
+
+              const data = await response.json();
+              const current = data.current;
+              const { icon, label } = mapWeatherCode(current.weather_code);
+              const temp = Math.round(current.temperature_2m);
+
+              if (weatherIcon) weatherIcon.textContent = icon;
+              if (weatherTemp) weatherTemp.textContent = `${temp}°F`;
+              if (weatherCondition) weatherCondition.textContent = label;
+              if (weatherStatus) weatherStatus.textContent = "Live conditions based on your current location.";
+            } catch (error) {
+              setWeatherState("🌤️", "Weather unavailable", "Live weather could not be loaded right now.");
+            }
+          },
+          () => {
+            setWeatherState("🌤️", "Enable location", "Enable location to see your weather.");
+          }
+        );
+      });
+    </script>
   </body>
 </html>
